@@ -1,0 +1,197 @@
+@import 'src/assets/styles/switch';
+@import 'src/assets/styles/checkbox';
+
+.widgets-dashboard {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .widget-table {
+    border-radius: .625rem;
+    box-shadow: .1rem .1rem 1rem $black-transparent;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    margin: 1rem;
+
+    h1 {
+      margin: 0;
+      padding: .5rem 0;
+      border-bottom: .2rem solid $gray;
+    }
+
+    .empty-message {
+      color: $green;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+    }
+
+    .widget-container {
+      .widget {
+        .badge {
+          transition: background-color .25s ease, color .25s ease;
+          box-shadow: 0 .1rem .25rem $black-ultra-transparent;
+          border-radius: .5rem;
+          padding: .75rem;
+          margin: 1.5rem 0 1rem 0;
+          display: flex;
+          align-items: center;
+          gap: .75rem;
+
+          .logo {
+            -webkit-mask: url(../../../assets/images/logo.svg);
+            mask: url(../../../assets/images/logo.svg);
+            background-color: $white;
+            width: 50px;
+            min-width: 50px;
+            height: 56px;
+          }
+
+          .label {
+            color: $white;
+
+            h3 {
+              margin: .3rem 0 0 0;
+            }
+          }
+        }
+
+        .setting {
+          height: 1.5rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: .75rem;
+          position: relative;
+
+          .info-icon {
+            -webkit-mask: url(../../../assets/images/info.svg);
+            mask: url(../../../assets/images/info.svg);
+            background-color: $green;
+            display: inline-block;
+            margin-bottom: .15rem;
+            width: 14px;
+            height: 14px;
+
+            &:hover + .tooltip {
+              opacity: 1;
+              transition: opacity .25s ease;
+            }
+
+          }
+
+          .tooltip {
+            position: absolute;
+            padding: .5rem;
+            top: 100%;
+            left: 50%;
+            width: 16rem;
+            text-align: center;
+            box-shadow: 0 .1rem .5rem $black-transparent;
+            background-color: $white;
+            border-radius: .25rem;
+            transition: opacity .25s .15s ease;
+            z-index: -1;
+            opacity: 0;
+
+            p {
+              font-size: .9rem;
+              color: $black;
+            }
+
+            h4 {
+              color: $black-transparent;
+              text-align: center;
+            }
+
+            a {
+              cursor: default;
+              text-decoration: none;
+              width: 100%;
+              display: flex;
+              justify-content: center;
+
+              h4 {
+                color: $green;
+                transition: opacity .25s;
+                margin: 1rem 0;
+                cursor: pointer;
+                width: fit-content;
+
+                &:hover {
+                  opacity: .75;
+                }
+              }
+            }
+
+            &:hover {
+              opacity: 1;
+              transition: opacity .25s ease;
+            }
+          }
+
+          span {
+            color: $green;
+            font-weight: bold;
+          }
+
+          .color-container {
+            display: flex;
+            gap: .3rem;
+
+            .color {
+              width: 1rem;
+              height: 1rem;
+              box-shadow: 0 .1rem .25rem $black-ultra-transparent;
+              border: .15rem solid transparent;
+              transition: opacity .2s, border-color .2s;
+
+              &:hover {
+                opacity: .75;
+              }
+
+              &.selected {
+                border: .15rem solid $silver-gray;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(min-width: 325px) {
+  .badge {
+    min-width: 15rem;
+  }
+}
+
+@media(min-width: 576px) {
+  .widget-table {
+    padding: 1.5rem 2.5rem 1.5rem 2.5rem;
+  }
+}
+
+@media(min-width: 992px) {
+  .widget-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    gap: 1rem;
+    padding-bottom: 7.5rem;
+  }
+}
+
+@media(min-width: 1024px) {
+  .widget-container {
+    gap: 2rem;
+  }
+}
+
+@media(min-width: 1366px) {
+  .widget-container {
+    gap: 4rem;
+  }
+}

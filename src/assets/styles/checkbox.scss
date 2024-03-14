@@ -1,0 +1,125 @@
+@import 'src/assets/styles/variables';
+
+/* Checkbox inspired by https://getcssscan.com/css-checkboxes-examples */
+.checkbox-wrapper * {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+
+  &.inp-cbx {
+    position: absolute;
+    visibility: hidden;
+
+    &:checked + .cbx span:first-child {
+      background: $green;
+      border-color: $green;
+      animation: wave-4 0.4s ease;
+
+      svg {
+        stroke-dashoffset: 0;
+      }
+    }
+  }
+
+  &.inline-svg {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &.cbx {
+    margin-top: .375rem;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    padding: .125rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    display: inline-block;
+
+    .shadow-circle {
+      width: 2.25rem;
+      height: 2.25rem;
+      background-color: $black-transparent;
+      position: absolute;
+      transform: translate(-25%, -25%);
+      opacity: 0%;
+      transition: opacity .25s;
+      border-radius: 1.5rem;
+    }
+
+    &:hover {
+      .shadow-circle {
+        opacity: 1;
+      }
+
+      span:first-child {
+        border-color: $green;
+      }
+    }
+
+    span {
+      float: left;
+      vertical-align: middle;
+      transform: translate3d(0, 0, 0);
+
+      &:first-child {
+        position: relative;
+        width: 1.125rem;
+        height: 1.125rem;
+        border-radius: .25rem;
+        transform: scale(1);
+        border: .1rem solid $gray;
+        transition: all 0.2s ease;
+        box-shadow: 0 .1rem .1rem $black-ultra-transparent;
+
+        svg {
+          position: absolute;
+          top: .2rem;
+          left: .15rem;
+          fill: none;
+          stroke: $white;
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          stroke-dasharray: 1rem;
+          stroke-dashoffset: 1rem;
+          transition: all 0.3s ease;
+          transition-delay: 0.1s;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      &:last-child {
+        padding-left: .5rem;
+        line-height: 1.125rem;
+      }
+    }
+  }
+}
+
+@-moz-keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@-webkit-keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@-o-keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}

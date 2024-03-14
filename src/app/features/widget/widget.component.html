@@ -1,0 +1,68 @@
+<div class="widgets-dashboard">
+  <div class="widget-table">
+    <h1>Per product widgets</h1>
+    <div class="widget-container">
+      <div *ngFor="let widget of productWidgets; index as index" class="widget">
+        <div #badge class="badge">
+          <div class="logo"></div>
+          <div class="label">
+            <small>This product {{ widget.action }}</small>
+            <h3>{{ widget.amount }} {{widget.type}}</h3>
+          </div>
+        </div>
+        <div class="setting">
+          <span>Link to Public Profile
+            <i class="info-icon" (mouseover)="onTooltipShow(tooltip)" (mouseleave)="onTooltipHide(tooltip)"></i>
+            <div #tooltip class="tooltip" (mouseover)="onTooltipShow(tooltip)" (mouseleave)="onTooltipHide(tooltip)">
+              <p>
+                This widget links directly to your public profile so that you can easily share your impact with your customers.
+                Turn it off here if you do not want the badge to link to it.
+              </p>
+              <a *ngIf="widget.linked" href="https://www.google.com" target="_blank">
+                <h4>View Public Profile</h4>
+              </a>
+              <h4 *ngIf="!widget.linked" class="disabled">View Public Profile</h4>
+            </div>
+          </span>
+          <div class="checkbox-wrapper">
+            <input class="inp-cbx" [id]="widget.id" [(ngModel)]="widget.linked" type="checkbox"/>
+            <label class="cbx" [for]="widget.id">
+              <span>
+                <svg width="12px" height="10px">
+                  <use xlink:href="#check"></use>
+                </svg>
+              </span>
+              <div class="shadow-circle"></div>
+            </label>
+            <svg class="inline-svg">
+              <symbol id="check" viewbox="0 0 12 10">
+                <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+              </symbol>
+            </svg>
+          </div>
+        </div>
+        <div class="setting">
+          <span>Badge colour</span>
+          <div class="color-container">
+            <div
+              *ngFor="let color of colorCollection"
+              [style.background-color]="'var(--' + color + ')'"
+              [class.selected]="color === widget.selectedColor"
+              (click)="selectColor(widget, color, badge)"
+              class="color">
+            </div>
+          </div>
+        </div>
+        <div class="setting">
+          <span>Activate badge</span>
+          <label class="switch">
+            <input [(ngModel)]="widget.active" (ngModelChange)="activateBadge(index)" type="checkbox">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <p *ngIf="!productWidgets || !productWidgets.length" class="empty-message">There are no widgets!</p>
+    </div>
+  </div>
+</div>
+
